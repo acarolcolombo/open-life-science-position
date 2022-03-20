@@ -1,0 +1,396 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% A general CV with all my experiences
+%
+% Based on the template of Leo Uieda's CV
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper]{article}
+
+% Identifying information
+\newcommand{\Title}{Community Researcher and Programme Coordinator}
+\newcommand{\FirstName}{Ana Caroline}
+\newcommand{\LastName}{Colombo}
+\newcommand{\Initials}{AC}
+\newcommand{\MyName}{\FirstName\ \LastName}
+\newcommand{\Me}{\textbf{\LastName, \Initials}}  % For citations
+\newcommand{\Email}{acarolcolombo@gmail.com}
+\newcommand{\Website}{acarolcolombo.com}
+\newcommand{\ORCID}{0000-0002-6547-0340}
+\newcommand{\phone}{+44 0757 718 7908}
+%\newcommand{\Affiliation}{}
+\newcommand{\Address}{19 Bowden Road}
+\newcommand{\City}{L19 1QN - Liverpool, UK}
+
+% Names for citing coauthors
+\newcommand{\Amanda}{De Oliveira, AR}
+\newcommand{\Adriano}{Reimer, AE}
+\newcommand{\Brandao}{Brandão, ML}
+\newcommand{\Muthu}{Muthuraju, S}
+\newcommand{\Rafael}{Almada, RC}
+\newcommand{\Marcio}{Rodrigues, ML}
+\newcommand{\Viviane}{Saito, VM}
+\newcommand{\Teddy}{Talbot, T}
+\newcommand{\Pag}{Rizzo, J}
+\newcommand{\Zamith}{Zamith-Miranda, D}
+\newcommand{\Va}{Silva, VKA}
+\newcommand{\Jeremy}{Allegood, JC}
+\newcommand{\Casadevall}{Casadevall, A}
+\newcommand{\Maurizio}{Del Poeta, M}
+\newcommand{\Josh}{Nosanchuk, JD}
+\newcommand{\Kronstad}{Kronstad, JW}
+\newcommand{\Nayara}{Barroca, NCB}
+\newcommand{\Mariana}{Guarda, MD}
+\newcommand{\Naiara}{Silva, NT}
+\newcommand{\Antonella}{Rella, A}
+\newcommand{\Tyler}{Normile, T}
+\newcommand{\Luna}{Joffe, LS}
+\newcommand{\Patricia}{Tavares, PM}
+\newcommand{\Glauber}{Araújo, GRS}
+\newcommand{\Susana}{Frases, S}
+\newcommand{\Erika}{Orner, EP}
+\newcommand{\Amir}{Farnoud, AM}
+\newcommand{\Bettina}{Fries, BC}
+\newcommand{\Brian}{Sheridan, B}
+\newcommand{\Leo}{Nimrichter, L}
+
+% Template configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Disable hyphenation
+\usepackage[none]{hyphenat}
+
+% Control the font size
+\usepackage{anyfontsize}
+
+% Icon fonts (requires using xelatex or luatex)
+\usepackage[fixed]{fontawesome5}
+\usepackage{academicons}
+
+% Template variables for styling
+\newcommand{\TablePad}{\vspace{-0.4cm}}
+\newcommand{\SoftwareTitle}[1]{{\bfseries #1}}
+\newcommand{\TableTitle}[1]{{\fontsize{12pt}{0}\selectfont \itshape #1}}
+
+% For fancy and multipage tables
+\usepackage{tabularx}
+\usepackage{ltablex}
+
+% Define a new environment to place all CV entries in a 2-column table.
+% Left column are the dates, right column the entries.
+\usepackage{environ}
+\NewEnviron{EntriesTable}{
+\TablePad
+\begin{tabularx}{\textwidth}{@{}p{0.04\textwidth} p{0.9\textwidth}@{}}
+    \BODY
+\end{tabularx}
+}
+
+% Macros to add links
+\newcommand{\DOI}[1]{doi:\href{https://doi.org/#1}{#1}}
+\newcommand{\GitHub}[1]{\newline • Code: \faGithub\ \href{https://github.com/#1}{#1}}
+
+
+% Macros to set the year and duration on the left column
+\newcommand{\Duration}[2]{\fontsize{10pt}{0}\selectfont #1--#2}
+\newcommand{\Year}[1]{\fontsize{10pt}{0}\selectfont #1}
+\newcommand{\now}{}
+
+% Define command to insert month name and year as date
+\usepackage{datetime}
+\newdateformat{monthyear}{\monthname[\THEMONTH], \THEYEAR}
+
+% Set the page margins
+\usepackage[left=0.5in,right=0.5in,top=0.7in,bottom=0.7in]{geometry}
+
+% No indentation
+\setlength\parindent{0cm}
+
+% Increase the line spacing
+\renewcommand{\baselinestretch}{1.1}
+% and the spacing between rows in tables
+\renewcommand{\arraystretch}{1.2}
+
+% Remove space between items in itemize and enumerate
+\usepackage{enumitem}
+\setlist{nosep}
+
+% Use custom colors
+\usepackage[usenames,dvipsnames]{xcolor}
+
+% Set fonts. Requires compilation with xelatex
+%\usepackage{fontspec} % required to make older xelatex compile with UTF8
+
+% Configure the font style for sections
+\usepackage{sectsty}
+\sectionfont{\vspace{0.1cm}\bfseries\fontsize{12pt}{0}\selectfont\uppercase}
+\subsectionfont{\vspace{0.1cm}\mdseries\fontsize{12pt}{0}\selectfont\uppercase}
+
+% Set the spacing for sections
+%\usepackage{titlesec}
+%\titlespacing{\section}{0pt}{0cm}{0.3cm}
+%\titlespacing{\subsection}{0pt}{0.3cm}{0.3cm}
+
+% Disable number of sections. Use this instead of "section*" so that the sections still
+% appear as PDF bookmarks. Otherwise, would have to add the table of contents entries
+% manually.
+\makeatletter
+\renewcommand{\@seccntformat}[1]{}
+\makeatother
+
+% Set fancy headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\chead{
+    \itshape
+    \fontsize{10pt}{12pt}\selectfont
+    \MyName
+    \hspace{0.2cm} -- \hspace{0.2cm}
+    \Title
+    \hspace{0.2cm} -- \hspace{0.2cm}
+    \monthyear\today
+}
+\rhead{}
+\cfoot{\fontsize{10pt}{0}\selectfont \thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+% Metadata for the PDF output and control of hyperlinks
+\usepackage[colorlinks=true]{hyperref}
+\hypersetup{
+    pdftitle={\MyName\ - \Title},
+    pdfauthor={\MyName},
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=black,
+    urlcolor=MidnightBlue
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+% No header for the first page
+\thispagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% HEADER
+{\fontsize{20pt}{0}\selectfont \MyName}	
+\\%[0.1cm]
+\rule{\textwidth}{0.2pt}
+%\begin{minipage}[t]{0.195\textwidth}
+%	 email: \href{mailto:\Email}{\Email}
+%	 \\
+%	 phone: {\phone}
+    %website: \href{https://www.\Website}{\Website}
+%\end{minipage}
+%\begin{minipage}[t]{\textwidth}
+  \begin{flushright}
+    %\Affiliation
+	%\\
+	\Address, \City
+	\\
+	{\phone}
+	\\
+	\href{mailto:\Email}{\Email}
+	\\
+	ORCID: \href{https://orcid.org/\ORCID}{\ORCID}
+	
+	
+  \end{flushright}
+%\end{minipage}
+
+I have a \textbf{PhD} in Biochemistry. During my \textbf{research career} I 
+worked within different biology fields, from neuroscience and behaviour to fungi infection and 
+extracellular vesicles. I also have experience working in 
+\textbf{educational settings}, such as a museum and a botanical garden,
+and a \textbf{charity}. I'm passionate about \textbf{science and education},
+and I believe that through \textbf{mentoring} we can improve \textbf{equality
+and diversity} in STEM. In the past year, I have been 
+developing my \textbf{creative writing} skills which resulted in a
+\textbf{children's book and a short story} in an anthology that will
+be published this year. I want to combine art and science,
+and make it \textbf{more accessible and engaging}. I also have been
+working on \textbf{open projects} and developing my \textbf{coding skills}
+through website development and data analysis.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Education}
+
+\begin{EntriesTable}
+    \Year{2018}  &
+    \textbf{PhD in Biochemistry}, \textit{Federal University of Rio de Janeiro (UFRJ), Brazil.}
+    \\
+    \Year{2014}  &
+    \textbf{MSc in Psychobiology}, \textit{University of São Paulo (USP), Brazil.}
+    \\
+    \Year{2011}  &
+    \textbf{BSc and Teaching Degree in Biology}, \textit{State University of São Paulo (UNESP), Brazil.}
+    \\
+    
+\end{EntriesTable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Continuing Education}
+
+\begin{EntriesTable}
+	\Year{2022}  &
+	\textbf{Write2 What's Next} -
+	Online - \textit{Writing on the Wall, UK.}
+	\\
+
+	\Year{2021}  &
+	\textbf{Write2Work} -
+	Online - \textit{Writing on the Wall, UK.}
+	\\
+
+	\Year{2020}  &
+	\textbf{Communication Skills for STEM Ambassadors} -
+	Online - \textit{Future Learn, UK.}
+	\\
+
+	\Year{2019}  &
+	\textbf{101 Web Development} -
+	DevLeague - \textit{Honolulu, HI, USA.}
+	\\
+
+\end{EntriesTable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Career summary}
+
+\begin{flushright} January 2022 - present 
+\end{flushright}	
+\textbf{Programme Intern at In2scienceUK} [Remote, UK].
+\\
+Contributing to the \textbf{development and delivery} of three programmes - the In2scienceUK summer programme, 
+In2research and Alumni Community - for disadvantaged 
+young people interested in pursuing a STEM career.
+\\
+\textit{Key responsibilities}
+\\
+\textbullet \ Creating communication material such as newsletters for volunteers 
+\\
+\textbullet \ Rebranding In2research webpage, updating content and structure
+\\
+\textbullet \ Participating, presenting, and assisting with online information sessions and workshops with volunteers, students, or external stakeholders
+\\
+\textbullet \ Budgeting for events
+\\
+\textbullet \ Supporting event planning, from defining objectives to debriefing afterwards
+\\
+\textbullet \ Updating and refining contact databases 
+\\
+\textbullet \ Drafting small grant proposals
+\\
+\textbullet \ Hosting internal and external team meetings, planning discussion points and meeting structure
+\\
+\textbullet \ Working with team communication and data organisation tools such as, Google Workspace, CRM, Work OS, and Wordpress
+\\
+\textit{Key achievements/projects}
+\\
+\textbullet \ Came up with a \textbf{strategic idea} of improving \textbf{volunteer engagement} through social media science interviews
+\\
+\textbullet \ Ongoing revision of our webpage for \textbf{better communication} with participants 
+\\ 
+\textbullet \ Applied IT and computer programming skills to make the \textbf{time consuming task} of scraping 
+contacts from websites for volunteer recruitment \textbf{more efficient} by an order of magnitude
+\\[0.1cm]
+
+\begin{flushright} June 2019 - July 2019
+\end{flushright}
+\textbf{Education Assistant Intern at Lyon Arboretum} [USA].
+\\
+Working with \textbf{science and outreach} at an Arboretum that was part of University of Hawai’i.
+\\
+\textit{Key responsibilities}
+\\
+\textbullet \ Developing educational content and material for a field trip 
+\\
+\textbullet \ Communicating with different age groups/audiences through guided visits and outreach events
+\\
+\textbullet \ Assisting other departments with their conservation effort tasks such as replanting and trail maintenance
+\\
+\textbullet \ Presenting achievements to the team
+\\
+\textit{Key achievements/projects}
+\\
+\textbullet \ Created material about plant adaptations for a field trip for third graders \textbf{that is still used} by the organisation. It was \textbf{tailored for primary school pupils}, and based on the US National Curriculum. 
+\\
+\textbullet \ Received \textbf{positive feedback} and praise from coworkers for my final presentation
+\\[0.1cm]
+
+\begin{flushright} August 2017 - December 2018
+\end{flushright}
+\textbf{Research Support Specialist at Stony Brook University} [USA].
+\\
+\textbf{Designing, managing and developing} scientific projects with researchers at a University biomedical laboratory.
+\\
+\textit{Key responsibilities}
+\\
+\textbullet \ Managing different scientific projects from concept to delivery 
+\\
+\textbullet \ Communicating science efficiently through presentation and written scientific papers
+\\
+\textbullet \ Collecting, analysing, and interpreting results
+\\
+\textbullet \ Assisting peers and junior members with hands-on tasks and giving feedback on their projects 
+\\
+\textit{Key achievements/projects}
+\\
+\textbullet \ \textbf{Coordinated} groups of up to 14 scientists from up to six \textbf{different research groups} to \textbf{successfully complete and publish} two scientific papers. 
+\\
+\textbullet \ Established a \textbf{new field} of research in which new members of the laboratory have continue to developing
+\\
+\textbullet \ \textbf{Maintain my relationship} with the group to this day giving support to new members
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Other Experience}
+
+\begin{EntriesTable}
+
+\Year{now} &
+\textbf{Demonstrator (Volunteer)} -
+\textit{Aquarium of the World Museum, Liverpool, UK.}
+\\
+
+\Year{now}  &
+\textbf{STEM Ambassador (Volunteer)} -
+\textit{All about STEM, Liverpool, UK.}
+\\
+	
+\Year{2020} & 
+\textbf{Invited speaker (Volunteer)} -
+\textit{Public School EMEF Prof. José Toledo de Mendonça, Brazil.}
+\\
+
+\Year{2009} &
+\textbf{Organizing committee of the XIII Biology Week (Volunteer)} -
+\textit{State University of São Paulo (UNESP), Brazil.}
+\\
+
+
+\end{EntriesTable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Technical Skills}
+
+	\textbullet \ Bilingual (English and Portuguese)
+	\textbullet \ Microsoft Office
+	\textbullet \ Google Workspace and Google Drive
+	\textbullet \ Work OS and CRM 
+	\textbullet \ Website Development 
+	\textbullet \ Basic Python and Jupyter Notebook
+	\textbullet \ Basic JavaScript, HTML, CSS, and \LaTeX\
+	\textbullet \ GitHub
+	\textbullet \ Basic Image Editing and Vector Graphics Software
+	\textbullet \ Data Processing and Statistical Analysis.
+
+
+\end{document}
